@@ -1,58 +1,39 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
+import { sliderItems } from '../data';
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const handleClick = (direction) => {};
+  const handleClick = (direction) => {
+    if (direction === 'left') {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
 
   return (
     <Container>
       <Arrow direction={'left'} onClick={() => handleClick('left')}>
         <ArrowLeftOutlined />
       </Arrow>
-      <Wrapper>
-        <Slide>
-          <ImageWrapper></ImageWrapper>
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
-            }
-          />
-          <InfoWrapper>
-            <Title>Choose Benazon</Title>
-            <Description>Best online electronics store!</Description>
-            <Button>Start Shopping!</Button>
-          </InfoWrapper>
-        </Slide>
-        <Slide>
-          <ImageWrapper></ImageWrapper>
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1517430796102-a3a80fe2b7a2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE1fHxlbGVjdHJvbmljc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
-          />
-          <InfoWrapper>
-            <Title>We stock everything you need</Title>
-            <Description>Shop all of your favorite brands here!</Description>
-            <Button>Start Shopping!</Button>
-          </InfoWrapper>
-        </Slide>
-        <Slide>
-          <ImageWrapper></ImageWrapper>
-          <Image
-            src={
-              'https://images.unsplash.com/photo-1583394708239-890b34a56a75?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODl8fGVsZWN0cm9uaWNzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
-            }
-          />
-          <InfoWrapper>
-            <Title>Best Prices</Title>
-            <Description>You won't find better deals anywhere!</Description>
-            <Button>Start Shopping!</Button>
-          </InfoWrapper>
-        </Slide>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item) => {
+          return (
+            <Slide>
+              <ImageWrapper></ImageWrapper>
+              <Image src={item.img} />
+              <InfoWrapper>
+                <Title>{item.title}</Title>
+                <Description>{item.desc}</Description>
+                <Button>Start Shopping!</Button>
+              </InfoWrapper>
+            </Slide>
+          );
+        })}
       </Wrapper>
-      <Arrow direction={'right'} nClick={() => handleClick('right')}>
+      <Arrow direction={'right'} onClick={() => handleClick('right')}>
         <ArrowRightOutlined />
       </Arrow>
     </Container>
@@ -71,9 +52,9 @@ const Container = styled.div`
 `;
 
 const Arrow = styled.div`
-  width: 50px;
-  height: 50px;
-  background-color: white;
+  width: 60px;
+  height: 60px;
+  background-color: yellow;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -91,7 +72,8 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transform: translateX(0vw);
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  transition: all 1s;
 `;
 
 const Slide = styled.div`
