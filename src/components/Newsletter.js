@@ -25,10 +25,34 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
-const Title = styled.h2``;
-const Description = styled.div``;
-const InputContainer = styled.div``;
-const Input = styled.input``;
-const Button = styled.button``;
+const Title = styled.h2`
+  font-size: 65px;
+  margin: 15px;
+`;
+const Description = styled.div`
+  font-size: 22px;
+  font-weight: 250;
+  margin-bottom: 3px;
+`;
+const InputContainer = styled.div`
+  width: 50%;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid darkgrey;
+`;
+const Input = styled.input`
+  border: none;
+  flex: 8;
+  padding-left: 20px;
+`;
+const Button = styled.button`
+  flex: 1;
+  border: none;
+  background-color: lightblue;
+  color: white;
+`;
