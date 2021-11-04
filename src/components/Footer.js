@@ -9,6 +9,7 @@ import {
   Phone,
   Mail,
 } from '@material-ui/icons';
+import { mobile } from '../responsive';
 
 const Footer = () => {
   return (
@@ -51,13 +52,14 @@ const Footer = () => {
       <RightSide>
         <Title>Contact</Title>
         <ContactItem>
-          <Room style={{marginRight: "10px"}} /> 100 Main Street, New York City
+          <Room style={{ marginRight: '10px' }} /> 100 Main Street, New York
+          City
         </ContactItem>
         <ContactItem>
-          <Phone style={{marginRight: "10px"}} /> 1-555-555-5555
+          <Phone style={{ marginRight: '10px' }} /> 1-555-555-5555
         </ContactItem>
         <ContactItem>
-          <Mail  style={{marginRight: "10px"}}/> support@benazon.com
+          <Mail style={{ marginRight: '10px' }} /> support@benazon.com
         </ContactItem>
       </RightSide>
     </Container>
@@ -68,6 +70,7 @@ export default Footer;
 
 const Container = styled.div`
   display: flex;
+  ${mobile({ flexDirection: 'column' })};
 `;
 const LeftSide = styled.div`
   flex: 1;
@@ -79,10 +82,12 @@ const LeftSide = styled.div`
 const Center = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ display: 'none' })};
 `;
 const RightSide = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ backgroundColor: '#eee' })};
 `;
 
 const Description = styled.p`

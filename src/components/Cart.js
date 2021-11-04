@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Add, Remove } from '@material-ui/icons';
+import { mobile } from '../responsive';
 
 const Cart = () => {
   return (
@@ -65,8 +66,9 @@ const Cart = () => {
               <PriceDetail>
                 <ProductAmountContainer>
                   <Add />
-                  <Remove />
+
                   <ProductAmount>2</ProductAmount>
+                  <Remove />
                 </ProductAmountContainer>
                 <ProductPrice>$20</ProductPrice>
               </PriceDetail>
@@ -130,7 +132,9 @@ const TopButton = styled.button`
   color: ${(props) => props.type === 'filled' && 'white'};
 `;
 
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+  ${mobile({ display: 'none' })};
+`;
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
@@ -140,6 +144,7 @@ const TopText = styled.span`
 const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: 'column' })};
 `;
 
 const Hr = styled.hr`
@@ -163,6 +168,7 @@ const Summary = styled.div`
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
+  ${mobile({ flexDirection: 'column' })};
 `;
 const ProductDetail = styled.div`
   flex: 2;
@@ -199,11 +205,13 @@ const ProductAmountContainer = styled.div`
 const ProductAmount = styled.div`
   font-size: 24px;
   margin: 5px;
+  ${mobile({ margin: '5px 15px' })};
 `;
 
 const ProductPrice = styled.div`
   font-size: 30px;
   font-weight: bold;
+  ${mobile({ marginBottom: '20px' })};
 `;
 
 const SummaryTitle = styled.h2`

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { mobile } from '../responsive';
 
 const LoginPage = () => {
   return (
@@ -33,6 +34,7 @@ const Wrapper = styled.div`
   padding: 20px;
   width: 25%;
   background-color: white;
+  ${mobile({ width: '80%' })};
 `;
 
 const Title = styled.h2`
