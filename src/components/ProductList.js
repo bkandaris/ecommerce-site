@@ -19,7 +19,7 @@ const ProductList = () => {
               Acer
             </Option>
             <Option>Sony</Option>
-            <Option>Toshiba</Option>
+            <Option>TLC</Option>
             <Option>Panasonic</Option>
             <Option>Samsung</Option>
           </Select>
